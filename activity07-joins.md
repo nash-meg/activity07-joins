@@ -209,14 +209,18 @@ the United States Look at the websites that the data come from (linked
 above). Are there any La Quinta’s locations outside of the US? What
 about Denny’s?
 
-**Response**:
+**Response**: There are La Quinta’s located outside of the US, including
+places like New Zealand, Turkey, and Canada. On the other hand, Denny’s
+is only located in the US (and oddly enough not in every state).
 
 If we wanted to do this using the datasets, would we need to ? Don’t
 worry about implementing this yet, you only need to brainstorm some
 ideas. Include at least one idea as your answer, but you are welcome to
 write down a few options too.
 
-**Response**:
+**Response**: To get just the US locations, Denny’s is all set but we
+would need to filter the rows with just US states (and dropping the
+other locations).
 
 ### Preparing to Join
 
@@ -228,15 +232,32 @@ state is *not in* `states$abbreviation`. Do not assign this to anything;
 we only want to see if we need to be aware of non-US cases. If there are
 any non-US locations, specify where these are.
 
-**Response**:
+``` r
+filter(dennys, !(state %in% states$abbreviation))
+```
+
+    ## # A tibble: 0 x 6
+    ## # … with 6 variables: address <chr>, city <chr>, state <chr>, zip <chr>,
+    ## #   longitude <dbl>, latitude <dbl>
+
+**Response**: There are no non-US locations.
 
 Now do this again, but using `anti_join`. To do so, take the Denny’s
 locations and anti-join this with the states dataset. Remember to
 specify your `by` columns.
 
+``` r
+dennys %>% 
+  anti_join(states, by = c("state" = "abbreviation"))
+```
+
+    ## # A tibble: 0 x 6
+    ## # … with 6 variables: address <chr>, city <chr>, state <chr>, zip <chr>,
+    ## #   longitude <dbl>, latitude <dbl>
+
 #### Brief Aside
 
-Another way to do this would be to create a new variable (called, says,
+Another way to do this would be to create a new variable (called, say,
 `country`), then filter on this new variable. Remember that `mutate`
 creates new variables. Then `dplyr::case_when` function is a nice way to
 do multiple if-else statements. For example, your instructor could see
