@@ -1,6 +1,6 @@
 ---
 title: "Activity 7"
-author: "Name"
+author: "Meghan Nash"
 output: github_document
 ---
 
@@ -13,6 +13,10 @@ knitr::opts_chunk$set(error = TRUE)
 Load the entirety of the `{tidyverse}`.
 Be sure to avoid printing out any unnecessary information and give the code chunk a meaningful name.
 
+```{r Loading Tidyverse}
+#load in tidyverse by using library(data_pack)
+library(tidyverse)
+```
 
 
 In this activity we will explore joining information that is contained in multiple data files.
@@ -31,7 +35,12 @@ Read each of the three files using `here::here` in combination with the appropri
 Assign each file to a meaningful object name (e.g., `dennys`,`laquinta`, and `states`), be sure to avoid printing any unnecessary information.
 Give your code chunk a meaningful name.
 
-
+```{r Reading in the csv files}
+#read in csv files by data_name <- read_csv(here::here("folder_data_is_in", "file_name.csv"))
+dennys <- read_csv(here::here("data","dennys.csv"))
+laquinta <- read_csv(here::here("data","laquinta.csv"))
+states <- read_csv(here::here("data", "states.csv"))
+```
 
 
 ### Provide more information
@@ -58,31 +67,31 @@ str(states)
 
 | Variable    | Type | Brief description                 |
 |-------------|------|-----------------------------------|
-| `address`   |      | street address of dennys location |
-| `city`      |      | city of dennys location           |
-| `state`     |      | state of dennys location          |
-| `zip`       |      | zip code of dennys location       |
-| `longitude` |      | east-west position on Earth       |
-| `latitude`  |      | north-south position on Earth     |
+| `address`   | chr  | street address of dennys location |
+| `city`      | chr  | city of dennys location           |
+| `state`     | chr  | state of dennys location          |
+| `zip`       | chr  | zip code of dennys location       |
+| `longitude` | num  | east-west position on Earth       |
+| `latitude`  | num  | north-south position on Earth     |
 
 #### La Quinta's data
 
 | Variable    | Type | Brief description                   |
 |-------------|------|-------------------------------------|
-| `address`   |      | street address of laquinta location |
-| `city`      |      | city of laquinta location           |
-| `state`     |      | state of laquinta location          |
-| `zip`       |      | zip code of laquinta location       |
-| `longitude` |      | east-west position on Earth         |
-| `latitude`  |      | north-south position on Earth       |
+| `address`   | chr  | street address of laquinta location |
+| `city`      | chr  | city of laquinta location           |
+| `state`     | chr  | state of laquinta location          |
+| `zip`       | chr  | zip code of laquinta location       |
+| `longitude` | num  | east-west position on Earth         |
+| `latitude`  | num  | north-south position on Earth       |
 
 #### States data
 
 | Variable       | Type | Brief description             |
 |----------------|------|-------------------------------|
-| `name`         |      | state name                    |
-| `abbreviation` |      | state abbreviation            |
-| `area`         |      | area in thousand square miles |
+| `name`         |  chr | state name                    |
+| `abbreviation` |  chr | state abbreviation            |
+| `area`         |  num | area in thousand square miles |
 
 ![](README-img/noun_pause.png) **Planned Pause Point**: If you have any questions, contact your instructor. Otherwise feel free to continue on.
 
